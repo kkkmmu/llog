@@ -1,19 +1,13 @@
-cmake_minimum_required(VERSION 2.8)
+CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
 
-project(libllog)
+PROJECT(llog)
 
-set(CMAKE_VERBOSE_MAKEFILE on)
+SET (CMAKE_VERBOSE_MAKEFILE on)
 
-enable_language(C)
+ENABLE_LANGUAGE(C)
 
-set(CFLAGS "-Wall -Werror")
-# set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${CFLAGS} -I include")
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${CFLAGS}")
-# set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
-# set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
-# set (CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
+SET (CFLAGS "-Wall -Werror")
+SET (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${CFLAGS}")
 
-# enable_testing()
-
-add_subdirectory(src)
-add_subdirectory(test)
+ADD_SUBDIRECTORY (src)
+ADD_SUBDIRECTORY (test)
