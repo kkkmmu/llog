@@ -30,11 +30,7 @@ int main(int argc, char **argv) {
     log_err("Welcome to: %s\n", "Beijing");
     log_warn("Go to: %s\n", "Hell");
     log_info("Stupid: %s\n", "apple");
-    check(1, "%s", "Success\n");
-    check(0, "%s", "Failure\n");
-    check_mem(NULL);
-    check_debug(NULL, "%s\n", "Debug NULL");
-error:
-    return 0;
+    CHECKRV(1, -1, "%s", "Success\n");
+    CHECKRV(0, -1, "%s", "Failure\n");
 }
 

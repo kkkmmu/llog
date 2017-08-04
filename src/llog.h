@@ -47,12 +47,10 @@ void llog(enum llog_level level, const char *fmt, ...);
 
 #define log_info(M, ...) llog(INFO, " (%s:%d) " M "\n", __FILE__, __LINE__, ##__VA_ARGS__)
 
-#define check(A, M, ...) if(!(A)) { log_err(M, ##__VA_ARGS__); errno=0; goto error; }
-
-#define sentinel(M, ...)  { log_err(M, ##__VA_ARGS__); errno=0; goto error; }
-
-#define check_mem(A) check((A), "Out of memory.")
-
-#define check_debug(A, M, ...) if(!(A)) { debug(M, ##__VA_ARGS__); errno=0; goto error; }
-
+#define CHECKRV(A, R, M, ...) if(!(A)) { log_err(M, ##__VA_ARGS__); return (R); }
+#define CHECKRV_MEM(A, B, SIZE, R, M, ...) if(memncmp((A), (B), (SIZE))) { log_err(M, ##__VA_ARGS__); return (R); }
+#define CHECKRV_POINTER(A, R, M, ...) if(!(A)) { log_err(M, ##__VA_ARGS__); return (R); }
+#define CHECKNRV(A, M, ...) if(!(A)) { log_err(M, ##__VA_ARGS__); return; }
+#define CHECKNRV_MEM(A, B, SIZE, M, ...) if(memncmp((A), (B), (SIZE))) { log_err(M, ##__VA_ARGS__); return; }
+#define CHECKNRV_POINTER(A, M, ...) if(!(A)) { log_err(M, ##__VA_ARGS__); return; }
 #endif /* __LLOG_H__ */
